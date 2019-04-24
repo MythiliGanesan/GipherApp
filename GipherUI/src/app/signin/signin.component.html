@@ -1,0 +1,21 @@
+<div class="container col-md-6">
+  <h1 style="color: indianred;" class="text-center">Welcome to Gipher App ! Please Signin ....</h1>
+  <br>
+  <img src="https://thumbs.dreamstime.com/t/welcome-word-written-looking-card-wood-94326261.jpg" alt="GiphyDb" class="center"> 
+    <form name="form" (ngSubmit)="f.form.valid && signInUser()" #f="ngForm" novalidate>
+      <div class="form-group" >
+          <label for="username"><strong>USER NAME</strong></label>
+          <input type="text" class="form-control" name="userid" id="userId" [(ngModel)]="userId"  required />
+          <div *ngIf="f.submitted && !f.form.controls.userid.valid" class="help-block text-danger">Username is required</div>
+      </div>
+      <div class="form-group" >
+          <label for="password"><strong>PASSWORD</strong></label>
+          <input type="password" class="form-control" name="password" id="password" [(ngModel)]="password" required />
+          <div *ngIf="f.submitted && !f.form.controls.password.valid" class="help-block text-danger">Password is required</div>
+      </div>
+      <div class="form-group">
+          <button [disabled]="loading" class="btn-btn-default" id="signin-user" type="submit">SIGN IN</button>
+          <a [routerLink]="['/signup']" class="btn btn-default" id="signup-button" style="color:red;">SIGN UP</a>
+      </div>
+      </form>
+</div>

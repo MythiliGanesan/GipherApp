@@ -1,0 +1,41 @@
+<div class="container" *ngIf="gif">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="text-center">{{gif.title}}</h2>
+    </div>
+    <br>
+    <div class="panel-body">
+      <div class="row">
+          <div class="col-md-6">
+          <img class="card-img" src="{{gif.images.downsized.url}}" alt="{{gif.title}}">
+        </div>
+        <div class="col-md-6">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Original Title:</strong> {{gif.title}}
+            </li>
+            <li class="list-group-item">
+              <strong>Username:</strong> {{gif.username}}
+            </li>
+            <li class="list-group-item">
+              <strong>Source URL:</strong> {{gif.source}}
+            </li>
+            <li class="list-group-item">
+              <strong>Gif Image URL:</strong> {{gif.bitly_gif_url}}
+            </li>
+            <li class="list-group-item">
+              <strong>Import DateTime:</strong> {{gif.import_datetime|date:'longDate'}}
+            </li>
+            <li class="list-group-item">
+              <strong>Rating:</strong> {{gif.rating}}
+            </li>
+          </ul>
+          <hr />
+          <button [hidden]="inFavourites" id="addBtn" type="button" class="btn btn-primary btn-lg  btn-block"
+           (click)="addToFavourites(gif.id,gif.title,gif.source,gif.username,gif.rating,gif.images.downsized.url)">Add to Favourites</button>
+          <button [hidden]="!inFavourites" id="removeBtn" type="button" class="btn btn-danger btn-lg btn-block" 
+             (click)="removeFromFavourites(gif.id)">Remove from Favourites</button>
+        </div>
+      </div>
+    </div>
+  </div>

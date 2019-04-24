@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row flex-column-reverse flex-md-row">
+      <div class="col-md-4" *ngFor="let gif of favourites">
+        <div class="card-body">  
+          <div class="card text-center">
+            <div class="card-img">
+                <img class="card-img" src="{{gif.posterPath}}" alt="{{gif.title}}"/>
+             </div> 
+             <div class="form-group">
+              <button id="remove-button" class="btn btn-danger gifRemoveBtn" (click)="removeFromFavourites(gif.gifId)" style="margin-top: 20px">Remove</button>
+            </div>
+             
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>
+

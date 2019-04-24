@@ -1,0 +1,45 @@
+version: '3'
+services:
+  user-app:
+   image: login-image
+   build: accountmanager/
+   restart: always
+   network_mode: host
+   ports:
+    - '8089:8089'
+   expose:
+    - 8089
+   depends_on:
+    - news-mysql
+
+  news-app:
+    image: backend-image
+    build: giphermanager/
+    restart: always
+    network_mode: host
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
+    depends_on:
+      - news-mysql
+
+  news-mysql:
+    image: mysql:5.5
+    network_mode: host
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: giphyDb
+
+  angular:
+   image: angular-image
+   build: .
+   restart: always
+   network_mode: host
+   container_name: angular-docker
+   ports:
+    - 4200:4200

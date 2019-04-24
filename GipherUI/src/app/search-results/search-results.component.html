@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row card-group">
+    <div class="col-4" id="gifList" *ngFor="let gif of searchResults">
+      <div class="card text-center">
+        <a class="gifItem" (click)="goToDetail(gif.id)">
+          <div class="card-body">  
+            <div class="card text-center">
+              <a (click)="goToDetail(gif.id)">
+              <div class="card-img">
+                  <img class="card-img" src="{{gif.images.downsized.url}}" alt="{{gif.title}}">
+                  <h5>{{gif.title}} - {{ gif.slug}}</h5>
+               </div> 
+              </a>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

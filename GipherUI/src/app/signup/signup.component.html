@@ -1,0 +1,36 @@
+<div class="container col-md-6 col-md-offset-3">
+  <h1 class="text-center">Register</h1>
+  <form name="form" (ngSubmit)="f.form.valid && signUpUser()" #f="ngForm" novalidate>
+      <div class="form-group" >
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" id="firstName" [(ngModel)]="fname"  required />
+          <div *ngIf="f.submitted && !f.form.controls.firstName.valid" class="help-block text-danger">First Name is required</div>
+      </div>
+
+      <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" name="lastName" id="lastName" [(ngModel)]="lname"  required />
+          <div *ngIf="f.submitted && !f.form.controls.lastName.valid" class="help-block text-danger">Last Name is required</div>
+      </div>
+
+      <div class="form-group" >
+        <label for="userId">Username</label>
+        <input type="text" class="form-control" name="userId" id="userId" [(ngModel)]="userId" pattern="(?=.*[a-z])(?=.*[A-Z]).{5,}" title="Username Should be Combination of small and capital Letter, Must have 5 Character" required />
+        <div *ngIf="f.submitted && !f.form.controls.userId.valid" class="help-block text-danger">Username is required </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" [(ngModel)]="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
+        <div *ngIf="f.submitted && !f.form.controls.password.valid" class="help-block text-danger">Password is required</div>
+    </div>
+
+      <div class="form-group">
+          <label class="control-label" for="save"></label>
+          <div>
+            <button id="signup-user" class="btn btn-sm btn-sucess">Signup</button>
+            <a [routerLink]="['/signin']" class="btn btn-link" style="color:red;">Signin</a>
+          </div>
+      </div>
+  </form>
+</div>

@@ -1,0 +1,20 @@
+<h1 class="text-center">Top Trending Giphers </h1>
+<div class="container">
+    <div class="row flex-column-reverse flex-md-row">
+      <div class="col-md-4" *ngFor="let gif of HomePageGifCollection">
+        <div class="card-body">  
+          <div class="card text-center">
+            <a id= "gif-id" (click)="goToDetail(gif.id)">
+            <div class="card-img">
+                <img class="card-img" src="{{gif.images.downsized.url}}" alt="{{gif.title}}">
+             </div> 
+            </a>
+             <a href="{{gif.embed_url}}" target="_blank" >Go to Source Gif </a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
